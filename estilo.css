@@ -1,0 +1,133 @@
+/* Altok 3D — catálogo público.
+   Mismos colores del panel interno, para que se vean de la misma familia. */
+
+:root {
+  --fondo: #0f1115;
+  --tarjeta: #171a21;
+  --borde: #2a2f3a;
+  --texto: #e8eaed;
+  --suave: #9aa0aa;
+  --tenue: #6b7280;
+  --teal: #14b8a6;
+  --teal-claro: #2dd4bf;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Portada ---------- */
+.portada {
+  text-align: center;
+  padding: 56px 20px 44px;
+  border-bottom: 1px solid var(--borde);
+  background: radial-gradient(circle at 50% 0%, rgba(20, 184, 166, .10), transparent 60%);
+}
+.logo { width: 210px; max-width: 70%; }
+.bajada { color: var(--suave); margin-top: 6px; font-size: 1.05rem; }
+.datos {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px;
+  margin: 22px 0 26px; color: var(--tenue); font-size: .85rem;
+}
+.datos i { color: var(--teal); }
+
+/* ---------- Botones ---------- */
+.btn-principal, .btn-secundario {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 24px; border-radius: 10px; font-weight: 500;
+  transition: transform .15s ease, background .15s ease;
+}
+.btn-principal { background: var(--teal); color: #04342c; }
+.btn-principal:hover { background: var(--teal-claro); transform: translateY(-2px); }
+.btn-secundario { background: #1c2029; color: var(--suave); border: 1px solid var(--borde); }
+.btn-secundario:hover { border-color: var(--teal); color: var(--teal-claro); }
+
+/* ---------- Secciones ---------- */
+main { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+section { padding: 52px 0; }
+h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 8px; }
+.nota { color: var(--tenue); font-size: .92rem; margin-bottom: 26px; max-width: 620px; }
+
+/* ---------- Productos ---------- */
+.grilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 18px;
+}
+.tarjeta {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform .18s ease, border-color .18s ease;
+}
+.tarjeta:hover { transform: translateY(-4px); border-color: var(--teal); }
+
+/* La foto mantiene siempre la misma proporción, aunque las imágenes cambien */
+.foto { aspect-ratio: 4 / 3; background: #1c2029; overflow: hidden; }
+.foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.cuerpo { padding: 16px 18px 18px; }
+.cuerpo h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+.cuerpo p { color: var(--suave); font-size: .9rem; margin-bottom: 12px; }
+.precio {
+  display: inline-block; color: var(--teal-claro); font-weight: 600;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .95rem;
+}
+
+/* ---------- Cómo funciona ---------- */
+.pasos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.paso {
+  background: var(--tarjeta); border: 1px solid var(--borde);
+  border-radius: 14px; padding: 22px;
+}
+.numero {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(20, 184, 166, .15); color: var(--teal-claro);
+  font-weight: 600; margin-bottom: 12px;
+}
+.paso h3 { font-size: 1rem; margin-bottom: 6px; }
+.paso p { color: var(--suave); font-size: .9rem; }
+
+/* ---------- Contacto ---------- */
+.contacto { text-align: center; border-top: 1px solid var(--borde); }
+.contacto .nota { margin: 0 auto 26px; }
+.botones { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+/* ---------- Pie ---------- */
+footer {
+  text-align: center; padding: 34px 20px 100px;
+  border-top: 1px solid var(--borde); color: var(--tenue); font-size: .85rem;
+}
+footer .chico { font-size: .78rem; margin-top: 4px; }
+
+/* ---------- Botón flotante de WhatsApp ---------- */
+.flotante {
+  position: fixed; right: 18px; bottom: 18px;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25d366; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px; box-shadow: 0 6px 20px rgba(0, 0, 0, .45);
+  transition: transform .15s ease;
+  z-index: 50;
+}
+.flotante:hover { transform: scale(1.08); }
+
+/* ---------- Celular ---------- */
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .portada { padding: 40px 18px 34px; }
+  section { padding: 40px 0; }
+  .grilla { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .cuerpo { padding: 13px 14px 15px; }
+  .cuerpo p { font-size: .82rem; }
+}
